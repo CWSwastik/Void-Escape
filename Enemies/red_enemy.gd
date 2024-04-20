@@ -28,6 +28,7 @@ func _physics_process(delta):
 		hacked = true
 		is_hackable = false
 		SPRITE.animation = "Hacked"
+		hack_label.visible = false
 		
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -52,11 +53,11 @@ func _physics_process(delta):
 		SPRITE.flip_h = true
 		
 	if SPRITE.flip_h:
-		player_detection.position.x = -50
+		player_detection.position.x = -70
 		player_killer.position.x = -2.5
 		player_hack.position.x = 5
 	else:
-		player_detection.position.x = 50
+		player_detection.position.x = 70
 		player_killer.position.x = 2.5
 		player_hack.position.x = -5
 
@@ -65,7 +66,7 @@ func _physics_process(delta):
 
 func _on_player_hack_body_entered(body):
 
-	if body.name == "Player":
+	if body.name == "Player" and not hacked:
 		is_hackable = true
 		hack_label.visible = true
 		

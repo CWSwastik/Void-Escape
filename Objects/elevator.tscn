@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvftducmgqars"]
+
+[ext_resource type="Script" path="res://Elevator.gd" id="1_4jylu"]
+[ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="2_4ss2g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srodl"]
+
+[node name="Elevator" type="AnimatableBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_4jylu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_srodl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4ss2g")
+region_enabled = true
+region_rect = Rect2(113, 121, 46, 19)

@@ -1,26 +1,30 @@
-[gd_scene load_steps=36 format=3 uid="uid://dg60eb86ociip"]
+[gd_scene load_steps=37 format=3 uid="uid://dg60eb86ociip"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0jcqu"]
-[ext_resource type="Texture2D" path="res://assets/player/vaga/dash-crop.png" id="2_gbrqr"]
+[ext_resource type="Texture2D" uid="uid://bge57t0in5ejg" path="res://assets/player/vaga/dash-crop.png" id="2_7u7m1"]
 [ext_resource type="Texture2D" uid="uid://bh2dxekvxe7pv" path="res://assets/player/vaga/idle.png" id="2_hv02m"]
 [ext_resource type="Texture2D" uid="uid://dmbqrn31347gd" path="res://assets/player/vaga/death-cropped.png" id="2_mkrgt"]
 [ext_resource type="Texture2D" uid="uid://ciat7uv40fim7" path="res://assets/player/vaga/jump.png" id="3_03nni"]
 [ext_resource type="Texture2D" uid="uid://cg5qqxmlntcpv" path="res://assets/player/vaga/run.png" id="3_fqlro"]
 [ext_resource type="Texture2D" uid="uid://c2kynbqj6o11i" path="res://assets/player/vaga/jump-flip.png" id="4_f25ro"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wytws"]
-size = Vector2(24, 48)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8jrys"]
+height = 48.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yitqv"]
-atlas = ExtResource("2_gbrqr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ahky"]
+atlas = ExtResource("2_7u7m1")
+region = Rect2(0, 0, 113, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehddb"]
+atlas = ExtResource("2_7u7m1")
 region = Rect2(113, 0, 113, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_et5xc"]
-atlas = ExtResource("2_gbrqr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkexl"]
+atlas = ExtResource("2_7u7m1")
 region = Rect2(226, 0, 113, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vmvje"]
-atlas = ExtResource("2_gbrqr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_okslm"]
+atlas = ExtResource("2_7u7m1")
 region = Rect2(339, 0, 113, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmhl6"]
@@ -118,14 +122,17 @@ region = Rect2(1344, 123, 192, 68)
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3k6y"]
 animations = [{
 "frames": [{
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_yitqv")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ahky")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_et5xc")
+"texture": SubResource("AtlasTexture_ehddb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vmvje")
+"texture": SubResource("AtlasTexture_wkexl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okslm")
 }],
 "loop": true,
 "name": &"Dash",
@@ -231,12 +238,11 @@ script = ExtResource("1_0jcqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -5)
-shape = SubResource("RectangleShape2D_wytws")
+shape = SubResource("CapsuleShape2D_8jrys")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -7)
 scale = Vector2(0.663542, 0.729167)
 sprite_frames = SubResource("SpriteFrames_q3k6y")
-animation = &"Dash"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.0504252

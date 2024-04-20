@@ -32,6 +32,7 @@ func _physics_process(delta):
 	elif not dashing:
 		SPRITE.animation = "Idle"
 	
+	
 
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -43,8 +44,6 @@ func _physics_process(delta):
 	if dash_cooldown < 0:
 		dashing = false
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("move_left", "move_right")
 	var sp = SPEED
 	

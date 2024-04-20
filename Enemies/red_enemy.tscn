@@ -116,7 +116,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so3dk"]
-size = Vector2(100, 11)
+size = Vector2(140, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ej4u"]
 size = Vector2(8.98438, 24)
@@ -125,6 +125,7 @@ size = Vector2(8.98438, 24)
 size = Vector2(12.5349, 22)
 
 [sub_resource type="SystemFont" id="SystemFont_jycpj"]
+subpixel_positioning = 0
 
 [node name="RedEnemy" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -142,7 +143,7 @@ autoplay = "Idle"
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(50, -2)
+position = Vector2(70, -2)
 shape = SubResource("RectangleShape2D_so3dk")
 
 [node name="PlayerHack" type="Area2D" parent="."]
