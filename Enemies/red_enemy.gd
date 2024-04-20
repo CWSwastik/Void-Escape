@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var SPEED = 230
+var SPEED = 250
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var chase = false
@@ -16,6 +16,11 @@ var is_hackable = false
 
 @export var face_left: bool = false 
 
+var spawn_location
+
+func _ready():
+	spawn_location = self.global_position
+	
 func _on_player_detection_body_entered(body):
 	if body.name == "Player" and not hacked:
 		chase = true
@@ -29,6 +34,7 @@ func _physics_process(delta):
 		is_hackable = false
 		SPRITE.animation = "Hacked"
 		hack_label.visible = false
+		set_collision_layer_value(1, false)
 		
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -42,11 +48,21 @@ func _physics_process(delta):
 			face_left = true
 		else:
 			face_left = false
-		if (player.position - self.position).length() > 250:
+		if (player.position - self.position).length() > 250 or abs(player.position.y - self.position.y) > 150:
 			chase = false
 			SPRITE.animation = "Idle"
+	elif (spawn_location - self.global_position).length() > 10:
+		var dir = (spawn_location - self.global_position).normalized()
+		
+		SPRITE.animation = "Walk"
+		velocity.x = dir.x * SPEED / 10
+		if dir.x < 0:
+			face_left = true
+		else:
+			face_left = false		
 	else:
 		velocity.x = 0
+		SPRITE.animation = "Idle"
 	
 	SPRITE.flip_h = velocity.x < 0
 	if face_left and velocity.x == 0:
