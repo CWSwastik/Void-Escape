@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://dg60eb86ociip"]
+[gd_scene load_steps=36 format=3 uid="uid://dg60eb86ociip"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0jcqu"]
+[ext_resource type="Texture2D" path="res://assets/player/vaga/dash-crop.png" id="2_gbrqr"]
 [ext_resource type="Texture2D" uid="uid://bh2dxekvxe7pv" path="res://assets/player/vaga/idle.png" id="2_hv02m"]
 [ext_resource type="Texture2D" uid="uid://dmbqrn31347gd" path="res://assets/player/vaga/death-cropped.png" id="2_mkrgt"]
 [ext_resource type="Texture2D" uid="uid://ciat7uv40fim7" path="res://assets/player/vaga/jump.png" id="3_03nni"]
@@ -9,6 +10,18 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wytws"]
 size = Vector2(24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yitqv"]
+atlas = ExtResource("2_gbrqr")
+region = Rect2(113, 0, 113, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et5xc"]
+atlas = ExtResource("2_gbrqr")
+region = Rect2(226, 0, 113, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmvje"]
+atlas = ExtResource("2_gbrqr")
+region = Rect2(339, 0, 113, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmhl6"]
 atlas = ExtResource("2_mkrgt")
@@ -104,6 +117,20 @@ region = Rect2(1344, 123, 192, 68)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3k6y"]
 animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_yitqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et5xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmvje")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nmhl6")
@@ -210,6 +237,6 @@ shape = SubResource("RectangleShape2D_wytws")
 position = Vector2(2, -7)
 scale = Vector2(0.663542, 0.729167)
 sprite_frames = SubResource("SpriteFrames_q3k6y")
-animation = &"Death"
+animation = &"Dash"
 autoplay = "Idle"
-frame_progress = 0.107897
+frame_progress = 0.0504252
