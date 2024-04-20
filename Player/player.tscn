@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c2kynbqj6o11i" path="res://assets/player/vaga/jump-flip.png" id="4_f25ro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wytws"]
-size = Vector2(24, 51)
+size = Vector2(24, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gh141"]
 atlas = ExtResource("2_hv02m")
@@ -148,13 +148,13 @@ animations = [{
 script = ExtResource("1_0jcqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -5.5)
+position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_wytws")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -7)
 scale = Vector2(0.663542, 0.729167)
 sprite_frames = SubResource("SpriteFrames_q3k6y")
-animation = &"Jump"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.947851
+frame_progress = 0.976826

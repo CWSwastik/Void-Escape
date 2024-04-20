@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://csgglbelb75em"]
+[gd_scene load_steps=7 format=3 uid="uid://csgglbelb75em"]
 
 [ext_resource type="Texture2D" uid="uid://cgs7f1tsxhfxn" path="res://assets/bg.jpg" id="1_glaly"]
 [ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="1_ve5cd"]
 [ext_resource type="PackedScene" uid="uid://dg60eb86ociip" path="res://Player/player.tscn" id="2_bfys1"]
+[ext_resource type="PackedScene" uid="uid://cqrrvpqh4h73b" path="res://Enemies/red_enemy.tscn" id="4_4hyri"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bi0l4"]
 texture = ExtResource("1_ve5cd")
@@ -1267,6 +1268,17 @@ position = Vector2(90, 129)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0.333336, 5.00679e-06)
 scale = Vector2(0.333333, 0.333333)
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+
+[node name="Mobs" type="Node2D" parent="."]
+
+[node name="RedEnemy" parent="Mobs" instance=ExtResource("4_4hyri")]
+position = Vector2(628, 302)
+
+[node name="RedEnemy2" parent="Mobs" instance=ExtResource("4_4hyri")]
+position = Vector2(198, 509)
+
+[node name="RedEnemy3" parent="Mobs" instance=ExtResource("4_4hyri")]
+position = Vector2(835, 600)
