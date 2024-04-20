@@ -14,6 +14,8 @@ func _physics_process(delta):
 	if killed:
 		SPRITE.animation = "Death"
 		velocity.x = 0
+		if velocity.y < 0:
+			velocity.y = 0
 		move_and_slide()
 		return
 		
