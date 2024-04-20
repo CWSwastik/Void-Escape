@@ -43,7 +43,7 @@ func _physics_process(delta):
 		
 		SPRITE.animation = "Walk"
 		velocity.x = dir.x * SPEED
-		print("Chasing")
+		
 		if dir.x < 0:
 			face_left = true
 		else:
