@@ -1,13 +1,42 @@
-[gd_scene load_steps=24 format=3 uid="uid://dg60eb86ociip"]
+[gd_scene load_steps=32 format=3 uid="uid://dg60eb86ociip"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0jcqu"]
 [ext_resource type="Texture2D" uid="uid://bh2dxekvxe7pv" path="res://assets/player/vaga/idle.png" id="2_hv02m"]
+[ext_resource type="Texture2D" uid="uid://dmbqrn31347gd" path="res://assets/player/vaga/death-cropped.png" id="2_mkrgt"]
 [ext_resource type="Texture2D" uid="uid://ciat7uv40fim7" path="res://assets/player/vaga/jump.png" id="3_03nni"]
 [ext_resource type="Texture2D" uid="uid://cg5qqxmlntcpv" path="res://assets/player/vaga/run.png" id="3_fqlro"]
 [ext_resource type="Texture2D" uid="uid://c2kynbqj6o11i" path="res://assets/player/vaga/jump-flip.png" id="4_f25ro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wytws"]
 size = Vector2(24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmhl6"]
+atlas = ExtResource("2_mkrgt")
+region = Rect2(0, 0, 130, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iedw2"]
+atlas = ExtResource("2_mkrgt")
+region = Rect2(130, 0, 130, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh8g2"]
+atlas = ExtResource("2_mkrgt")
+region = Rect2(260, 0, 130, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpe1r"]
+atlas = ExtResource("2_mkrgt")
+region = Rect2(390, 0, 130, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cq6q"]
+atlas = ExtResource("2_mkrgt")
+region = Rect2(520, 0, 130, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08elm"]
+atlas = ExtResource("2_mkrgt")
+region = Rect2(0, 74, 130, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dxs6"]
+atlas = ExtResource("2_mkrgt")
+region = Rect2(130, 74, 130, 74)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gh141"]
 atlas = ExtResource("2_hv02m")
@@ -75,6 +104,32 @@ region = Rect2(1344, 123, 192, 68)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3k6y"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmhl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iedw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh8g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpe1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cq6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08elm")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_5dxs6")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gh141")
@@ -155,6 +210,6 @@ shape = SubResource("RectangleShape2D_wytws")
 position = Vector2(2, -7)
 scale = Vector2(0.663542, 0.729167)
 sprite_frames = SubResource("SpriteFrames_q3k6y")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
-frame_progress = 0.911477
+frame_progress = 0.44815

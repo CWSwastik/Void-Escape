@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqrrvpqh4h73b"]
+[gd_scene load_steps=20 format=3 uid="uid://cqrrvpqh4h73b"]
 
 [ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="1_8ubp4"]
 [ext_resource type="Script" path="res://Enemies/red_enemy.gd" id="1_gkbnx"]
@@ -106,6 +106,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so3dk"]
 size = Vector2(100, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ej4u"]
+size = Vector2(5, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj5sx"]
+size = Vector2(12.5349, 22)
+
 [node name="RedEnemy" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_gkbnx")
@@ -118,7 +124,7 @@ shape = SubResource("RectangleShape2D_3bhv4")
 sprite_frames = SubResource("SpriteFrames_ba452")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.121117
+frame_progress = 0.821281
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 
@@ -126,5 +132,20 @@ frame_progress = 0.121117
 position = Vector2(50, -2)
 shape = SubResource("RectangleShape2D_so3dk")
 
+[node name="PlayerHack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHack"]
+position = Vector2(-7, 4)
+shape = SubResource("RectangleShape2D_7ej4u")
+
+[node name="PlayerKill" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKill"]
+position = Vector2(1.77121, 4.5)
+scale = Vector2(0.993831, 1)
+shape = SubResource("RectangleShape2D_uj5sx")
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="PlayerHack" to="." method="_on_player_hack_body_entered"]
+[connection signal="body_entered" from="PlayerKill" to="." method="_on_player_kill_body_entered"]
