@@ -5,6 +5,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var player = $"../../Player"
 var chase = false
 @onready var SPRITE = $AnimatedSprite2D
+@onready var player_detection = $PlayerDetection/CollisionShape2D
 
 func _on_player_detection_body_entered(body):
 	if body.name == "Player":
@@ -27,5 +28,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 	SPRITE.flip_h = velocity.x < 0
+	if SPRITE.flip_h:
+		player_detection.position.x = -50
+	else:
+		player_detection.position.x = 50
 	
 	move_and_slide()

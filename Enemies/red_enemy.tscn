@@ -103,8 +103,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_i73po"]
-radius = 59.5189
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_so3dk"]
+size = Vector2(100, 11)
 
 [node name="RedEnemy" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -118,12 +118,13 @@ shape = SubResource("RectangleShape2D_3bhv4")
 sprite_frames = SubResource("SpriteFrames_ba452")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.892069
+frame_progress = 0.121117
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-shape = SubResource("CircleShape2D_i73po")
+position = Vector2(50, -2)
+shape = SubResource("RectangleShape2D_so3dk")
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
