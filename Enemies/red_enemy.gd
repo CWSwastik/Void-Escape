@@ -20,7 +20,6 @@ var spawn_location
 
 func _ready():
 	spawn_location = self.global_position
-	
 func _on_player_detection_body_entered(body):
 	if body.name == "Player" and not hacked:
 		chase = true
@@ -44,6 +43,7 @@ func _physics_process(delta):
 		
 		SPRITE.animation = "Walk"
 		velocity.x = dir.x * SPEED
+		print("Chasing")
 		if dir.x < 0:
 			face_left = true
 		else:
@@ -51,18 +51,21 @@ func _physics_process(delta):
 		if (player.position - self.position).length() > 250 or abs(player.position.y - self.position.y) > 150:
 			chase = false
 			SPRITE.animation = "Idle"
-	elif (spawn_location - self.global_position).length() > 10:
+	elif (spawn_location - self.global_position).length() > 25 and not hacked:
 		var dir = (spawn_location - self.global_position).normalized()
 		
 		SPRITE.animation = "Walk"
 		velocity.x = dir.x * SPEED / 10
-		if dir.x < 0:
-			face_left = true
-		else:
-			face_left = false		
+		#if dir.x < 0:
+			#face_left = true
+		#else:
+			#face_left = false		
 	else:
 		velocity.x = 0
 		SPRITE.animation = "Idle"
+	
+	if hacked:
+		SPRITE.animation = "Hacked"
 	
 	SPRITE.flip_h = velocity.x < 0
 	if face_left and velocity.x == 0:
@@ -98,6 +101,7 @@ func _on_player_kill_body_entered(body):
 		body.killed = true
 		chase = false
 		SPRITE.animation = "Idle"
+		hacked = true
 		
 
 
