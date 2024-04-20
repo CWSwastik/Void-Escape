@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd2j5aac03i36"]
+
+[ext_resource type="Script" path="res://gameaudios.gd" id="1_j4axe"]
+[ext_resource type="AudioStream" uid="uid://c83iqn4rvlue" path="res://assets/SFX/Holographic Tap Interaction.wav" id="1_tlbfa"]
+
+[node name="GameAudios" type="Node"]
+script = ExtResource("1_j4axe")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_tlbfa")
+volume_db = 24.0
