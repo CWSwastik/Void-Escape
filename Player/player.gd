@@ -18,7 +18,7 @@ func _physics_process(delta):
 		SPRITE.animation = "Death"
 		velocity.x = 0
 		if velocity.y < 0:
-			velocity.y = 0
+			velocity.y = 50
 		move_and_slide()
 		return
 		
@@ -78,3 +78,9 @@ func _physics_process(delta):
 	SPRITE.flip_h = velocity.x < 0
 	if facing_left and velocity.x == 0:
 		SPRITE.flip_h = true
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if SPRITE.animation == "Death":
+		await get_tree().create_timer(3.0).timeout
+		get_tree().change_scene_to_file("res://main.tscn")
