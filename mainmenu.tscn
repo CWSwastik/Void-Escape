@@ -18,7 +18,7 @@ func _on_start_button_pressed():
 	get_tree().change_scene_to_file(\"res://Levels/level1.tscn\")
 
 func _on_options_button_pressed():
-	get_tree().change_scene_to_file(\"res://Levels/level3.tscn\")
+	get_tree().change_scene_to_file(\"res://leaderboard.tscn\")
 
 func _on_quit_button_pressed():
 	get_tree().quit()
@@ -65,7 +65,7 @@ text = "𝘚𝘛𝘈𝘙𝘛"
 layout_mode = 2
 focus_neighbor_left = NodePath("../StartButton")
 focus_neighbor_right = NodePath("../QuitButton")
-text = "𝘖𝘗𝘛𝘐𝘖𝘕𝘚"
+text = "Leaderboard"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://csyi3wwgsj3hi"]
+
+[ext_resource type="Script" path="res://leaderboard.gd" id="1_rtno0"]
+[ext_resource type="FontFile" uid="uid://cv8de3kqqibqp" path="res://assets/Fonts/joystix/joystix monospace.otf" id="2_w780f"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rtno0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 47.0
+offset_right = 966.0
+offset_bottom = 102.0
+theme_override_fonts/font = ExtResource("2_w780f")
+theme_override_font_sizes/font_size = 40
+text = "Void Escape Leaderboard"
+
+[node name="ScorePanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 131.0
+offset_right = 870.0
+offset_bottom = 577.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScorePanel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = 577.0
+offset_bottom = 416.0
+
+[node name="PlayerList" type="VBoxContainer" parent="ScorePanel/ScrollContainer"]
+layout_mode = 2

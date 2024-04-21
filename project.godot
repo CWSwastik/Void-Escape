@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameAudios="*res://GameAudios.tscn"
 Global="*res://Global.gd"
+LootLocker="*res://LootLocker.gd"
 
 [display]
 
