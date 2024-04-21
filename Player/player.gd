@@ -15,7 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var SPRITE = $AnimatedSprite2D
 
 # special powers
-var can_jump = false
+var can_jump = true
 var can_dash = false
 
 func _physics_process(delta):

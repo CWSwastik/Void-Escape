@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://6ogjope1jhix"]
+
+[ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="1_8or6l"]
+[ext_resource type="Script" path="res://Objects/laser.gd" id="1_o3amr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urogg"]
+size = Vector2(4, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tipr"]
+atlas = ExtResource("1_8or6l")
+region = Rect2(48, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ypgx"]
+atlas = ExtResource("1_8or6l")
+region = Rect2(64, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jc81"]
+atlas = ExtResource("1_8or6l")
+region = Rect2(80, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5q5qy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tipr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ypgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jc81")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Laser" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_o3amr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_urogg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5q5qy")
+autoplay = "default"
+frame_progress = 0.705231
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_5q5qy")
+autoplay = "default"
+frame_progress = 0.459126
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, -16)
+sprite_frames = SubResource("SpriteFrames_5q5qy")
+autoplay = "default"
+frame_progress = 0.628426
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

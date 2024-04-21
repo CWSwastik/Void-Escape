@@ -20,9 +20,12 @@ var spawn_location
 
 func _ready():
 	spawn_location = self.global_position
+
 func _on_player_detection_body_entered(body):
+
 	if body.name == "Player" and not hacked:
 		chase = true
+
 		
 func _on_player_detection_body_exited(_body):
 	pass
@@ -48,7 +51,7 @@ func _physics_process(delta):
 			face_left = true
 		else:
 			face_left = false
-		if (player.position - self.position).length() > 250 or abs(player.position.y - self.position.y) > 150:
+		if (player.position - self.position).length() > 300 or abs(player.position.y - self.position.y) > 150:
 			chase = false
 			SPRITE.animation = "Idle"
 	elif (spawn_location - self.global_position).length() > 25 and not hacked:
