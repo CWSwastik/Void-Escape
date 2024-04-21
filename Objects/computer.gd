@@ -18,7 +18,7 @@ func _on_body_exited(body):
 		using = false
 		label.visible = false
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_usable and Input.is_action_just_pressed("hack"):
 		print("Using computer")
 		using = true

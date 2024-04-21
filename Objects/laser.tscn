@@ -46,7 +46,7 @@ shape = SubResource("RectangleShape2D_urogg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5q5qy")
 autoplay = "default"
-frame_progress = 0.705231
+frame_progress = 0.635058
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16)
@@ -58,6 +58,6 @@ frame_progress = 0.459126
 position = Vector2(0.5, -16)
 sprite_frames = SubResource("SpriteFrames_5q5qy")
 autoplay = "default"
-frame_progress = 0.628426
+frame_progress = 0.558253
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

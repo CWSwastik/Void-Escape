@@ -8,7 +8,7 @@ script/source = "extends Control
 func _ready():
 	$VBoxContainer/StartButton.grab_focus()
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_start_button_pressed():

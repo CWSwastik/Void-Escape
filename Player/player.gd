@@ -1,14 +1,20 @@
 extends CharacterBody2D
 
 
-var killed = false
 const SPEED = 200.0
 const DASH = 500.0
 const JUMP_VELOCITY = -435.0
+const MAX_DASH_COOLDOWN = 10 # frames
+const MAX_ATTACK_COOLDOWN = 50 # frames
+
+var killed = false
+
 
 var facing_left = false
 var dashing = false
-var dash_cooldown = 10
+var attacking = false
+var dash_cooldown = MAX_DASH_COOLDOWN
+var attack_cooldown = MAX_ATTACK_COOLDOWN
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -17,6 +23,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # special powers
 var can_jump = true
 var can_dash = false
+var can_attack = true
+
 
 func _physics_process(delta):
 	if killed:
@@ -34,9 +42,9 @@ func _physics_process(delta):
 			SPRITE.animation = "Jump"
 	elif (abs(velocity.x) > 1):
 		SPRITE.animation = "Run"
-	elif not dashing:
+	elif not dashing and not attacking:
 		SPRITE.animation = "Idle"
-	
+		print("Idling")
 	
 
 	if not is_on_floor():
@@ -55,7 +63,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dash") and can_dash:
 		sp = DASH
 		dashing = true
-		dash_cooldown = 10
+		dash_cooldown = MAX_DASH_COOLDOWN
 		SPRITE.animation = "Dash"
 		
 	if dashing:
@@ -66,7 +74,7 @@ func _physics_process(delta):
 		else:
 			velocity.x = sp
 		
-	if direction:
+	if direction and not attacking:
 		velocity.x = direction * sp
 		if direction < 0:
 			facing_left = true
@@ -76,7 +84,19 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 
+	if Input.is_action_just_pressed("attack") and can_attack and is_on_floor():
+		SPRITE.animation = "Attack"
+		attacking = true
+		attack_cooldown = MAX_ATTACK_COOLDOWN
+		velocity.x = 0
+		print("Starting attack")
 
+	if attacking:
+		attack_cooldown -= 1
+		
+	if attack_cooldown < 0:
+		attacking = false
+	
 	move_and_slide()
 	
 	
@@ -89,3 +109,4 @@ func _on_animated_sprite_2d_animation_finished():
 	if SPRITE.animation == "Death":
 		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://mainmenu.tscn")
+		
