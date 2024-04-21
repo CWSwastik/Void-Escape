@@ -5,13 +5,18 @@ var killed = false
 const SPEED = 200.0
 const DASH = 500.0
 const JUMP_VELOCITY = -435.0
-@onready var SPRITE = $AnimatedSprite2D
+
 var facing_left = false
 var dashing = false
 var dash_cooldown = 10
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@onready var SPRITE = $AnimatedSprite2D
+
+# special powers
+var can_jump = false
+var can_dash = false
 
 func _physics_process(delta):
 	if killed:
@@ -38,7 +43,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and can_jump:
 		velocity.y = JUMP_VELOCITY
 		
 	if dash_cooldown < 0:
@@ -47,7 +52,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	var sp = SPEED
 	
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and can_dash:
 		sp = DASH
 		dashing = true
 		dash_cooldown = 10
@@ -82,5 +87,5 @@ func _physics_process(delta):
 
 func _on_animated_sprite_2d_animation_finished():
 	if SPRITE.animation == "Death":
-		await get_tree().create_timer(3.0).timeout
-		get_tree().change_scene_to_file("res://main.tscn")
+		await get_tree().create_timer(2.0).timeout
+		get_tree().change_scene_to_file("res://mainmenu.tscn")

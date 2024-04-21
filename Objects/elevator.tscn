@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvftducmgqars"]
 
-[ext_resource type="Script" path="res://Elevator.gd" id="1_4jylu"]
+[ext_resource type="Script" path="res://Objects/elevator.gd" id="1_yad8h"]
 [ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="2_4ss2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srodl"]
@@ -11,7 +11,7 @@ size = Vector2(24, 18)
 
 [node name="Elevator" type="AnimatableBody2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_4jylu")
+script = ExtResource("1_yad8h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.25, 2)

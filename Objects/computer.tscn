@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdy40i474m5vb"]
+
+[ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="1_e8don"]
+[ext_resource type="Script" path="res://Objects/computer.gd" id="1_e51dq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykp6k"]
+size = Vector2(46, 48)
+
+[sub_resource type="SystemFont" id="SystemFont_1nhdd"]
+subpixel_positioning = 0
+
+[node name="Computer" type="Area2D"]
+script = ExtResource("1_e51dq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ykp6k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_e8don")
+region_enabled = true
+region_rect = Rect2(176, 200, 16, 24)
+
+[node name="Label" type="RichTextLabel" parent="."]
+visible = false
+texture_filter = 1
+offset_left = -36.0
+offset_top = -46.0
+offset_right = 92.0
+offset_bottom = -20.0
+theme_override_fonts/normal_font = SubResource("SystemFont_1nhdd")
+theme_override_font_sizes/normal_font_size = 12
+text = "Press X to Use"
+
+[node name="HackMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HackMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -152.0
+offset_right = 49.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HackMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="JumpLabel" type="Label" parent="HackMenu/PanelContainer/Panel"]
+layout_mode = 2
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 68.0
+offset_bottom = 41.0
+text = "Jump"
+
+[node name="JumpButton" type="CheckButton" parent="HackMenu/PanelContainer/Panel/JumpLabel"]
+layout_mode = 2
+offset_left = 45.0
+offset_right = 95.0
+offset_bottom = 27.0
+
+[node name="DashLabel" type="Label" parent="HackMenu/PanelContainer/Panel"]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 49.0
+offset_right = 66.0
+offset_bottom = 72.0
+text = "Dash
+"
+
+[node name="DashButton" type="CheckButton" parent="HackMenu/PanelContainer/Panel/DashLabel"]
+layout_mode = 2
+offset_left = 48.0
+offset_right = 98.0
+offset_bottom = 27.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="toggled" from="HackMenu/PanelContainer/Panel/JumpLabel/JumpButton" to="." method="_on_jump_button_toggled"]
+[connection signal="toggled" from="HackMenu/PanelContainer/Panel/DashLabel/DashButton" to="." method="_on_dash_button_toggled"]
