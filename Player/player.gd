@@ -5,7 +5,7 @@ const SPEED = 200.0
 const DASH = 500.0
 const JUMP_VELOCITY = -435.0
 const MAX_DASH_COOLDOWN = 10 # frames
-const MAX_ATTACK_COOLDOWN = 50 # frames
+const MAX_ATTACK_COOLDOWN = 35 # frames
 
 var killed = false
 
@@ -16,15 +16,20 @@ var attacking = false
 var dash_cooldown = MAX_DASH_COOLDOWN
 var attack_cooldown = MAX_ATTACK_COOLDOWN
 
+
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var SPRITE = $AnimatedSprite2D
+@onready var enemy_killer = $EnemyKiller/CollisionShape2D
 
 # special powers
 var can_jump = true
 var can_dash = false
 var can_attack = true
 
+
+var enemies_in_kill_range = []
 
 func _physics_process(delta):
 	if killed:
@@ -35,6 +40,11 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 		
+	if len(enemies_in_kill_range) != 0 and attacking:
+		for e in enemies_in_kill_range:
+			e.kill()
+		
+		
 	if not is_on_floor():
 		if (abs(velocity.x) > 500): # TODO: Figure this out
 			SPRITE.animation = "JumpFlip"
@@ -44,7 +54,7 @@ func _physics_process(delta):
 		SPRITE.animation = "Run"
 	elif not dashing and not attacking:
 		SPRITE.animation = "Idle"
-		print("Idling")
+
 	
 
 	if not is_on_floor():
@@ -85,11 +95,10 @@ func _physics_process(delta):
 		
 
 	if Input.is_action_just_pressed("attack") and can_attack and is_on_floor():
-		SPRITE.animation = "Attack"
+		SPRITE.animation = "Attack" + str(randi_range(1,2))
 		attacking = true
 		attack_cooldown = MAX_ATTACK_COOLDOWN
 		velocity.x = 0
-		print("Starting attack")
 
 	if attacking:
 		attack_cooldown -= 1
@@ -104,9 +113,26 @@ func _physics_process(delta):
 	if facing_left and velocity.x == 0:
 		SPRITE.flip_h = true
 
+	if SPRITE.flip_h:
+		enemy_killer.position.x = -50
+	else:
+		enemy_killer.position.x = 50
 
 func _on_animated_sprite_2d_animation_finished():
 	if SPRITE.animation == "Death":
 		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://mainmenu.tscn")
 		
+
+
+func _on_enemy_killer_body_entered(body):
+	if body.name.contains("RedEnemy"):
+		if attacking:
+			body.kill()
+		else:
+			enemies_in_kill_range.append(body)
+
+
+func _on_enemy_killer_body_exited(body):
+	if body.name.contains("RedEnemy"):
+		enemies_in_kill_range.erase(body)

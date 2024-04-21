@@ -16,6 +16,7 @@ var is_hackable = false
 
 @export var face_left: bool = false 
 
+
 var spawn_location
 
 func _ready():
@@ -38,8 +39,14 @@ func _physics_process(delta):
 		hack_label.visible = false
 		set_collision_layer_value(1, false)
 		
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	
+	if hacked:
+		SPRITE.animation = "Hacked"
+		move_and_slide()
+		return
 		
 	if chase:
 		var dir = (player.position - self.position).normalized()
@@ -67,8 +74,6 @@ func _physics_process(delta):
 		velocity.x = 0
 		SPRITE.animation = "Idle"
 	
-	if hacked:
-		SPRITE.animation = "Hacked"
 	
 	SPRITE.flip_h = velocity.x < 0
 	if face_left and velocity.x == 0:
@@ -106,5 +111,16 @@ func _on_player_kill_body_entered(body):
 		SPRITE.animation = "Idle"
 		hacked = true
 		
+		
+func kill():
+	var _particle = preload("res://Objects/DeathParticles.tscn").instantiate()
+	_particle.position = global_position
+	_particle.rotation = global_rotation
+	_particle.emitting = true
+	get_tree().current_scene.add_child(_particle)
+	hacked = true
+	velocity.x = 0
+	await get_tree().create_timer(0.2).timeout
+	queue_free()
 
 

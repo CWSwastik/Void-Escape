@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dg60eb86ociip"]
+[gd_scene load_steps=49 format=3 uid="uid://dg60eb86ociip"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0jcqu"]
 [ext_resource type="Texture2D" uid="uid://bge57t0in5ejg" path="res://assets/player/vaga/dash-crop.png" id="2_7u7m1"]
@@ -31,6 +31,26 @@ region = Rect2(951, 0, 317, 164)
 [sub_resource type="AtlasTexture" id="AtlasTexture_66mqi"]
 atlas = ExtResource("2_62x0g")
 region = Rect2(1268, 0, 317, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yelax"]
+atlas = ExtResource("2_62x0g")
+region = Rect2(0, 328, 317, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dgdw"]
+atlas = ExtResource("2_62x0g")
+region = Rect2(317, 328, 317, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gtda"]
+atlas = ExtResource("2_62x0g")
+region = Rect2(634, 328, 317, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2prxr"]
+atlas = ExtResource("2_62x0g")
+region = Rect2(951, 328, 317, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33y10"]
+atlas = ExtResource("2_62x0g")
+region = Rect2(1268, 328, 317, 164)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ahky"]
 atlas = ExtResource("2_7u7m1")
@@ -159,7 +179,27 @@ animations = [{
 "texture": SubResource("AtlasTexture_66mqi")
 }],
 "loop": true,
-"name": &"Attack",
+"name": &"Attack1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yelax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dgdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gtda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2prxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33y10")
+}],
+"loop": true,
+"name": &"Attack2",
 "speed": 5.0
 }, {
 "frames": [{
@@ -274,6 +314,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l113g"]
+radius = 18.0
+height = 94.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_0jcqu")
@@ -286,9 +330,18 @@ shape = SubResource("CapsuleShape2D_8jrys")
 position = Vector2(2, -7)
 scale = Vector2(0.663542, 0.729167)
 sprite_frames = SubResource("SpriteFrames_q3k6y")
-animation = &"Attack"
+animation = &"Attack2"
 autoplay = "Idle"
-frame = 4
-frame_progress = 1.0
+frame_progress = 0.309638
+
+[node name="EnemyKiller" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKiller"]
+position = Vector2(50, -5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l113g")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="EnemyKiller" to="." method="_on_enemy_killer_body_entered"]
+[connection signal="body_exited" from="EnemyKiller" to="." method="_on_enemy_killer_body_exited"]
