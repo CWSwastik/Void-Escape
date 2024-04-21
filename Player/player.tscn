@@ -332,7 +332,7 @@ scale = Vector2(0.663542, 0.729167)
 sprite_frames = SubResource("SpriteFrames_q3k6y")
 animation = &"Attack2"
 autoplay = "Idle"
-frame_progress = 0.309638
+frame_progress = 0.138053
 
 [node name="EnemyKiller" type="Area2D" parent="."]
 scale = Vector2(1, 1)

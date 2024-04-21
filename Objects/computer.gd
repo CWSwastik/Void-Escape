@@ -6,6 +6,9 @@ var using = false
 @onready var hack_menu = $HackMenu
 @onready var player = $"../Player"
 
+@export var show_jump: bool = false
+@export var show_dash: bool = false
+@export var show_attack: bool = false
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -27,6 +30,9 @@ func _physics_process(_delta):
 		
 	if using:
 		hack_menu.visible = true
+		$HackMenu/PanelContainer/Panel/JumpLabel.visible = show_jump
+		$HackMenu/PanelContainer/Panel/DashLabel.visible = show_dash
+		$HackMenu/PanelContainer/Panel/AttackLabel.visible = show_attack
 	else:
 		hack_menu.visible = false
 		
@@ -34,7 +40,13 @@ func _physics_process(_delta):
 
 func _on_dash_button_toggled(toggled_on):
 	player.can_dash = toggled_on
+	print("Player Dash", toggled_on)
 
 
 func _on_jump_button_toggled(toggled_on):
 	player.can_jump = toggled_on
+	print("Player Jump", toggled_on)
+
+func _on_attack_button_toggled(toggled_on):
+	player.can_attack = toggled_on
+	print("Player Attack", toggled_on)

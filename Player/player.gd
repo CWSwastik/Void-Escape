@@ -24,9 +24,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var enemy_killer = $EnemyKiller/CollisionShape2D
 
 # special powers
-var can_jump = true
-var can_dash = false
-var can_attack = true
+var can_jump = "jump" in Global.player_abilities
+var can_dash = "dash" in Global.player_abilities
+var can_attack = "attack" in Global.player_abilities
 
 
 var enemies_in_kill_range = []

@@ -104,3 +104,4 @@ offset_bottom = 25.0
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="toggled" from="HackMenu/PanelContainer/Panel/JumpLabel/JumpButton" to="." method="_on_jump_button_toggled"]
 [connection signal="toggled" from="HackMenu/PanelContainer/Panel/DashLabel/DashButton" to="." method="_on_dash_button_toggled"]
+[connection signal="toggled" from="HackMenu/PanelContainer/Panel/AttackLabel/AttackButton" to="." method="_on_attack_button_toggled"]

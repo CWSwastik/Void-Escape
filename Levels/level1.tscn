@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://csgglbelb75em"]
+[gd_scene load_steps=12 format=3 uid="uid://csgglbelb75em"]
 
 [ext_resource type="Texture2D" uid="uid://cgs7f1tsxhfxn" path="res://assets/bg.jpg" id="1_dijrs"]
 [ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="2_hilar"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://iy46adbjbe5m" path="res://Objects/exit_area.tscn" id="6_vwyjx"]
 [ext_resource type="PackedScene" uid="uid://c3d1pbvn2fp7v" path="res://Levels/level2.tscn" id="7_q5jkk"]
 [ext_resource type="PackedScene" uid="uid://bdy40i474m5vb" path="res://Objects/computer.tscn" id="8_uic0l"]
+[ext_resource type="PackedScene" uid="uid://bkf8oryj0potu" path="res://Objects/timer.tscn" id="9_w3106"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bi0l4"]
 texture = ExtResource("2_hilar")
@@ -1241,3 +1242,6 @@ target_level = ExtResource("7_q5jkk")
 
 [node name="Computer" parent="." instance=ExtResource("8_uic0l")]
 position = Vector2(156, 616)
+show_jump = true
+
+[node name="Timer" parent="." instance=ExtResource("9_w3106")]

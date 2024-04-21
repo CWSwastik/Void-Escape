@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkf8oryj0potu"]
+
+[ext_resource type="Script" path="res://Levels/Timer.gd" id="1_1dp8m"]
+[ext_resource type="FontFile" uid="uid://cv8de3kqqibqp" path="res://assets/Fonts/joystix/joystix monospace.otf" id="2_wn2j7"]
+
+[node name="Timer" type="CanvasLayer"]
+script = ExtResource("1_1dp8m")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_wn2j7")
+theme_override_font_sizes/font_size = 30
+text = "00:00:00"

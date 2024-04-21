@@ -122,7 +122,7 @@ size = Vector2(140, 11)
 size = Vector2(8.98438, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj5sx"]
-size = Vector2(12.5349, 22)
+size = Vector2(12.5349, 25)
 
 [sub_resource type="SystemFont" id="SystemFont_jycpj"]
 subpixel_positioning = 0
@@ -155,7 +155,7 @@ shape = SubResource("RectangleShape2D_7ej4u")
 [node name="PlayerKill" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKill"]
-position = Vector2(1.77121, 4.5)
+position = Vector2(1.77121, 3)
 scale = Vector2(0.993831, 1)
 shape = SubResource("RectangleShape2D_uj5sx")
 
