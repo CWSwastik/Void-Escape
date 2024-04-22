@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bln2u5hoix0cm"]
 
-[ext_resource type="Texture2D" uid="uid://cgs7f1tsxhfxn" path="res://assets/bg.jpg" id="1_a2jj4"]
+[ext_resource type="PackedScene" uid="uid://ckah0qh4nnyav" path="res://parallax_background.tscn" id="1_hhsu1"]
 [ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="2_f60bt"]
 [ext_resource type="PackedScene" uid="uid://dg60eb86ociip" path="res://Player/player.tscn" id="3_pkf7i"]
 [ext_resource type="PackedScene" uid="uid://cqrrvpqh4h73b" path="res://Enemies/red_enemy.tscn" id="4_p07y5"]
@@ -1192,10 +1192,7 @@ sources/0 = SubResource("TileSetAtlasSource_bi0l4")
 
 [node name="World" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1151.0
-offset_bottom = 673.0
-texture = ExtResource("1_a2jj4")
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_hhsu1")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

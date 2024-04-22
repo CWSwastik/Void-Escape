@@ -7,3 +7,6 @@ func _on_body_entered(body):
 		Global.update_score()
 		get_tree().change_scene_to_packed(target_level)
 		
+		
+
+	

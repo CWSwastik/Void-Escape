@@ -6,7 +6,7 @@ var score = 0:
 		if val > high_score:
 			high_score = val
 var high_score = 0
-var player_abilities = [] # jump, dash, attack
+var player_abilities = ["jump"] # jump, dash, attack
 
 @onready var game_start_time = Time.get_ticks_msec()
 
