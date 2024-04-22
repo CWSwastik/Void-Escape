@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2bmdblntc6iw"]
+
+[ext_resource type="Script" path="res://Objects/laser_toggle.gd" id="1_bh4tx"]
+[ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="1_hfetu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kgv1"]
+atlas = ExtResource("1_hfetu")
+region = Rect2(160, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8x43"]
+atlas = ExtResource("1_hfetu")
+region = Rect2(160, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqqeq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kgv1")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8x43")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8o8b4"]
+size = Vector2(8, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tw0q0"]
+size = Vector2(4, 2)
+
+[node name="LaserToggle" type="StaticBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_bh4tx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sqqeq")
+animation = &"unpressed"
+autoplay = "unpressed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_8o8b4")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_tw0q0")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

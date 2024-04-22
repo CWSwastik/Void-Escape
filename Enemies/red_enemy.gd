@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var SPEED = 250
+@export var SPEED = 250
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var chase = false
