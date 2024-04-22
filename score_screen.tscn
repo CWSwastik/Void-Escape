@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://b42sgw7y27qd8"]
+
+[ext_resource type="FontFile" uid="uid://cv8de3kqqibqp" path="res://assets/Fonts/joystix/joystix monospace.otf" id="1_673tb"]
+[ext_resource type="Script" path="res://score_screen.gd" id="1_hofqp"]
+
+[node name="ScoreScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hofqp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 80.0
+offset_right = 841.0
+offset_bottom = 502.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 122.0
+offset_right = 743.0
+offset_bottom = 175.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_673tb")
+theme_override_font_sizes/font_size = 44
+text = "YOU DIED!"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 220.0
+offset_right = 935.0
+offset_bottom = 273.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_673tb")
+theme_override_font_sizes/font_size = 30
+text = "score: 0"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 320.0
+offset_right = 708.0
+offset_bottom = 380.0
+placeholder_text = "Enter your name"
+alignment = 1
+
+[node name="SubmitButton" type="Button" parent="LineEdit"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 98.0
+offset_right = 177.0
+offset_bottom = 129.0
+text = "Submit"
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="LineEdit/SubmitButton" to="." method="_on_submit_button_pressed"]

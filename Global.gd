@@ -1,6 +1,6 @@
 extends Node
 
-var time_elapsed = 0
+var score = 0
 var player_abilities = [] # jump, dash, attack
 
 @onready var game_start_time = Time.get_ticks_msec()
@@ -18,7 +18,15 @@ func get_time():
 	if int(secs) < 10:
 		secs = "0" + str(secs)
 
-	
-	
-
 	return ((mins) + ":" + (secs))
+
+func update_score():
+	var elapsed = Time.get_ticks_msec() - game_start_time
+	var secs = (elapsed/1000)
+	if secs > 15*60:
+		score += 100
+	else:
+		score += 15*60-secs + 100
+		
+	game_start_time = Time.get_ticks_msec()
+	

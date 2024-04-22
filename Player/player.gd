@@ -120,8 +120,8 @@ func _physics_process(delta):
 
 func _on_animated_sprite_2d_animation_finished():
 	if SPRITE.animation == "Death":
-		await get_tree().create_timer(2.0).timeout
-		get_tree().change_scene_to_file("res://mainmenu.tscn")
+		await get_tree().create_timer(1.0).timeout
+		get_tree().change_scene_to_file("res://score_screen.tscn")
 		
 
 

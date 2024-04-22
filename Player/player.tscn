@@ -335,7 +335,6 @@ autoplay = "Idle"
 frame_progress = 0.138053
 
 [node name="EnemyKiller" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKiller"]
 position = Vector2(50, -5)

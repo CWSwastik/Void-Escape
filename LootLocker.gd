@@ -6,7 +6,7 @@ var game_API_key = "dev_30ff4deec9f0482e995c30c07974965e"
 var development_mode = true
 var leaderboard_key = "21714"
 var session_token = ""
-var score = 0
+var player_name = ""
 
 # HTTP Request node can only handle one call per node
 var auth_http = HTTPRequest.new()
@@ -18,7 +18,9 @@ var get_name_http = HTTPRequest.new()
 
 func _ready():
 	_authentication_request()
-
+	await wait_until_authorized()
+	_get_player_name()
+	
 func wait_until_authorized():
 	while session_token == "":
 		await get_tree().create_timer(0.5).timeout
@@ -138,21 +140,24 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 	leaderboard_http.queue_free()
 
 
-func _upload_score(score: int):
+func _upload_score():
+	var score = Global.score
 	var data = { "score": str(score) }
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	submit_score_http = HTTPRequest.new()
 	add_child(submit_score_http)
 	submit_score_http.request_completed.connect(_on_upload_score_request_completed)
-	# Send request
-	submit_score_http.request("https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/submit", headers, HTTPClient.METHOD_POST, JSON.stringify(data))
 	# Print what we're sending, for debugging purposes:
 	print(data)
-
-func _change_player_name(player_name: String):
-	print("Changing player name")
 	
-	var data = { "name": str(player_name) }
+	# Send request
+	await submit_score_http.request("https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/submit", headers, HTTPClient.METHOD_POST, JSON.stringify(data))
+
+
+func _change_player_name(p_name: String):
+	print("Changing player name")
+	player_name = p_name
+	var data = { "name": str(p_name) }
 	var url =  "https://api.lootlocker.io/game/player/name"
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	
@@ -191,6 +196,7 @@ func _on_player_get_name_request_completed(result, response_code, headers, body)
 	print(json.get_data())
 	# Print player name
 	print(json.get_data().name)
+	player_name = json.get_data().name
 
 func _on_upload_score_request_completed(result, response_code, headers, body) :
 	var json = JSON.new()

@@ -38,3 +38,15 @@ offset_bottom = 416.0
 
 [node name="PlayerList" type="VBoxContainer" parent="ScorePanel/ScrollContainer"]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 596.0
+offset_right = 652.0
+offset_bottom = 631.0
+theme_override_fonts/font = ExtResource("2_w780f")
+theme_override_font_sizes/font_size = 18
+text = "Go back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

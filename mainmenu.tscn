@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnsri1dg6tsm3"]
+[gd_scene load_steps=4 format=3 uid="uid://dnsri1dg6tsm3"]
 
 [ext_resource type="Texture2D" uid="uid://bbiqeprb5sbo6" path="res://assets/Backgrounds/AIgen2.jpg" id="2_173b7"]
+[ext_resource type="FontFile" uid="uid://cv8de3kqqibqp" path="res://assets/Fonts/joystix/joystix monospace.otf" id="2_ixxvb"]
 
 [sub_resource type="GDScript" id="GDScript_lmns8"]
 script/source = "extends Control
@@ -59,12 +60,14 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../QuitButton")
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_right = NodePath("../OptionsButton")
-text = "𝘚𝘛𝘈𝘙𝘛"
+theme_override_fonts/font = ExtResource("2_ixxvb")
+text = "Start"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../StartButton")
 focus_neighbor_right = NodePath("../QuitButton")
+theme_override_fonts/font = ExtResource("2_ixxvb")
 text = "Leaderboard"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
@@ -73,7 +76,35 @@ focus_neighbor_left = NodePath("../OptionsButton")
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_right = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../StartButton")
-text = "𝘘𝘜𝘐𝘛"
+theme_override_fonts/font = ExtResource("2_ixxvb")
+text = "QUIT"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 285.0
+offset_right = 718.0
+offset_bottom = 408.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 445.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("2_ixxvb")
+theme_override_font_sizes/font_size = 43
+text = "VOID ESCAPE:"
+
+[node name="Label2" type="Label" parent="Panel/Label"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 58.0
+offset_right = 649.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("2_ixxvb")
+theme_override_font_sizes/font_size = 43
+text = "FORGOTTEN MEMORIES"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
