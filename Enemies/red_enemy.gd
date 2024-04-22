@@ -38,6 +38,7 @@ func _physics_process(delta):
 		SPRITE.animation = "Hacked"
 		hack_label.visible = false
 		set_collision_layer_value(1, false)
+		Global.score += 50
 		
 	
 	if not is_on_floor():
