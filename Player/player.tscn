@@ -180,7 +180,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack1",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -200,7 +200,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack2",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -332,7 +332,6 @@ scale = Vector2(0.663542, 0.729167)
 sprite_frames = SubResource("SpriteFrames_q3k6y")
 animation = &"Attack2"
 autoplay = "Idle"
-frame_progress = 0.138053
 
 [node name="EnemyKiller" type="Area2D" parent="."]
 

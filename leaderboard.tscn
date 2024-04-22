@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://csyi3wwgsj3hi"]
+[gd_scene load_steps=4 format=3 uid="uid://csyi3wwgsj3hi"]
 
 [ext_resource type="Script" path="res://leaderboard.gd" id="1_rtno0"]
 [ext_resource type="FontFile" uid="uid://cv8de3kqqibqp" path="res://assets/Fonts/joystix/joystix monospace.otf" id="2_w780f"]
+[ext_resource type="Texture2D" uid="uid://bbiqeprb5sbo6" path="res://assets/Backgrounds/AIgen2.jpg" id="2_weq54"]
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
@@ -12,15 +13,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rtno0")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_weq54")
+expand_mode = 1
+stretch_mode = 1
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 207.0
-offset_top = 47.0
-offset_right = 966.0
-offset_bottom = 102.0
+offset_left = 381.0
+offset_top = 46.0
+offset_right = 1140.0
+offset_bottom = 101.0
 theme_override_fonts/font = ExtResource("2_w780f")
 theme_override_font_sizes/font_size = 40
-text = "Void Escape Leaderboard"
+text = "Leaderboard"
 
 [node name="ScorePanel" type="Panel" parent="."]
 layout_mode = 0

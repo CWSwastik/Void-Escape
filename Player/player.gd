@@ -5,7 +5,7 @@ const SPEED = 200.0
 const DASH = 500.0
 const JUMP_VELOCITY = -435.0
 const MAX_DASH_COOLDOWN = 10 # frames
-const MAX_ATTACK_COOLDOWN = 35 # frames
+const MAX_ATTACK_COOLDOWN = 18 # frames
 
 var killed = false
 
