@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://csyi3wwgsj3hi"]
+[gd_scene load_steps=6 format=3 uid="uid://csyi3wwgsj3hi"]
 
 [ext_resource type="Script" path="res://leaderboard.gd" id="1_rtno0"]
 [ext_resource type="FontFile" uid="uid://cv8de3kqqibqp" path="res://assets/Fonts/joystix/joystix monospace.otf" id="2_w780f"]
 [ext_resource type="Texture2D" uid="uid://bbiqeprb5sbo6" path="res://assets/Backgrounds/AIgen2.jpg" id="2_weq54"]
+[ext_resource type="PackedScene" uid="uid://skjwn3bfyl58" path="res://board_entry.tscn" id="4_fp47v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b1gb5"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
@@ -43,13 +52,19 @@ offset_bottom = 577.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ScorePanel"]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 129.0
 offset_top = 28.0
 offset_right = 577.0
 offset_bottom = 416.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_b1gb5")
 
 [node name="PlayerList" type="VBoxContainer" parent="ScorePanel/ScrollContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BoardEntry" parent="ScorePanel/ScrollContainer/PlayerList" instance=ExtResource("4_fp47v")]
+layout_mode = 2
+size_flags_vertical = 4
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0

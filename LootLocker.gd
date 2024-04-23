@@ -3,7 +3,7 @@ extends Node
 # Use this game API key if you want to test with a functioning leaderboard
 # "987dbd0b9e5eb3749072acc47a210996eea9feb0"
 var game_API_key = "dev_30ff4deec9f0482e995c30c07974965e"
-var development_mode = true
+var development_mode = false
 var leaderboard_key = "21714"
 var session_token = ""
 var player_name = ""
@@ -61,11 +61,11 @@ func _authentication_request():
 		player_session_exists = true
 		
 	## Convert data to json string:
-	var data = { "game_key": game_API_key, "game_version": "0.0.0.1", "development_mode": true }
+	var data = { "game_key": game_API_key, "game_version": "0.0.0.1", "development_mode": development_mode }
 	
 	# If a player session already exists, send with the player identifier
 	if(player_session_exists == true):
-		data = { "game_key": game_API_key, "player_identifier":player_identifier, "game_version": "0.0.0.1", "development_mode": true }
+		data = { "game_key": game_API_key, "player_identifier":player_identifier, "game_version": "0.0.0.1", "development_mode": development_mode }
 	
 	# Add 'Content-Type' header:
 	var headers = ["Content-Type: application/json"]

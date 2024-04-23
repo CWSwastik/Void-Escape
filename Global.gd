@@ -4,9 +4,13 @@ var score = 0:
 	set (val):
 		score = val
 		if val > high_score:
+			old_high_score = high_score
 			high_score = val
 var high_score = 0
-var player_abilities = ["jump"] # jump, dash, attack
+var old_high_score = 0
+var player_abilities = [] # jump, dash, attack
+var dialogue_played = true
+var escaped = false
 
 @onready var game_start_time = Time.get_ticks_msec()
 

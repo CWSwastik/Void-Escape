@@ -6,6 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var chase = false
 var hacked = false
 var is_hackable = false
+var killed = false
 
 @onready var player = $"../../Player"
 @onready var SPRITE = $AnimatedSprite2D
@@ -38,7 +39,9 @@ func _physics_process(delta):
 		SPRITE.animation = "Hacked"
 		hack_label.visible = false
 		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
 		Global.score += 50
+		GameAudios.hack()
 		
 	
 	if not is_on_floor():
@@ -46,13 +49,16 @@ func _physics_process(delta):
 	
 	if hacked:
 		SPRITE.animation = "Hacked"
-		move_and_slide()
+		return
+		
+	if killed:
 		return
 		
 	if chase:
 		var dir = (player.position - self.position).normalized()
 		
 		SPRITE.animation = "Walk"
+		GameAudios.robot_walk()
 		velocity.x = dir.x * SPEED
 		
 		if dir.x < 0:
@@ -62,11 +68,13 @@ func _physics_process(delta):
 		if (player.position - self.position).length() > 300 or abs(player.position.y - self.position.y) > 150:
 			chase = false
 			SPRITE.animation = "Idle"
+			GameAudios.stop_robot_walk()
 	elif (spawn_location - self.global_position).length() > 25 and not hacked:
 		var dir = (spawn_location - self.global_position).normalized()
 		
 		SPRITE.animation = "Walk"
-		velocity.x = dir.x * SPEED / 10
+		GameAudios.robot_walk()
+		velocity.x = dir.x * SPEED / 6
 		#if dir.x < 0:
 			#face_left = true
 		#else:
@@ -74,6 +82,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		SPRITE.animation = "Idle"
+		GameAudios.stop_robot_walk()
 	
 	
 	SPRITE.flip_h = velocity.x < 0
@@ -89,7 +98,8 @@ func _physics_process(delta):
 		player_killer.position.x = 2.5
 		player_hack.position.x = -5
 
-	move_and_slide()
+	if not hacked:
+		move_and_slide()
 
 
 func _on_player_hack_body_entered(body):
@@ -110,7 +120,7 @@ func _on_player_kill_body_entered(body):
 		body.killed = true
 		chase = false
 		SPRITE.animation = "Idle"
-		hacked = true
+		killed = true
 		
 		
 func kill():
@@ -119,8 +129,9 @@ func kill():
 	_particle.rotation = global_rotation
 	_particle.emitting = true
 	get_tree().current_scene.add_child(_particle)
-	hacked = true
+	killed = true
 	velocity.x = 0
+	GameAudios.explosion()
 	await get_tree().create_timer(0.2).timeout
 	queue_free()
 

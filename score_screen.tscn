@@ -41,7 +41,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_673tb")
 theme_override_font_sizes/font_size = 44
-text = "YOU DIED!"
+text = "YOU DIED."
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0

@@ -1,7 +1,7 @@
 extends HBoxContainer
 
-var player_name = "Anonymouse"
-var player_score = 0
+var player_name = "Name"
+var player_score = "Score"
 
 func _ready():
 	$NameLabel.text = player_name

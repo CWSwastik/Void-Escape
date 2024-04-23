@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dg60eb86ociip"]
+[gd_scene load_steps=51 format=3 uid="uid://dg60eb86ociip"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0jcqu"]
 [ext_resource type="Texture2D" uid="uid://bge57t0in5ejg" path="res://assets/player/vaga/dash-crop.png" id="2_7u7m1"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ciat7uv40fim7" path="res://assets/player/vaga/jump.png" id="3_03nni"]
 [ext_resource type="Texture2D" uid="uid://cg5qqxmlntcpv" path="res://assets/player/vaga/run.png" id="3_fqlro"]
 [ext_resource type="Texture2D" uid="uid://c2kynbqj6o11i" path="res://assets/player/vaga/jump-flip.png" id="4_f25ro"]
+[ext_resource type="Texture2D" uid="uid://bkmg244x63btx" path="res://assets/UI/running-16.png" id="9_c7sfr"]
+[ext_resource type="Texture2D" uid="uid://ce58bi2wtqrve" path="res://assets/UI/Sword.png" id="10_6vvk6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8jrys"]
 height = 48.0
@@ -339,6 +341,58 @@ autoplay = "Idle"
 position = Vector2(50, -5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_l113g")
+
+[node name="PlayerStats" type="CanvasLayer" parent="."]
+
+[node name="DashPanel" type="Panel" parent="PlayerStats"]
+visible = false
+offset_left = 863.0
+offset_top = 10.0
+offset_right = 1135.0
+offset_bottom = 80.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerStats/DashPanel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 16.0
+offset_right = 55.0
+offset_bottom = 56.0
+texture = ExtResource("9_c7sfr")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerStats/DashPanel"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 23.0
+offset_right = 244.0
+offset_bottom = 50.0
+value = 50.0
+show_percentage = false
+
+[node name="AttackPanel" type="Panel" parent="PlayerStats"]
+visible = false
+offset_left = 581.0
+offset_top = 10.0
+offset_right = 853.0
+offset_bottom = 80.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerStats/AttackPanel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 16.0
+offset_right = 55.0
+offset_bottom = 56.0
+texture = ExtResource("10_6vvk6")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerStats/AttackPanel"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 23.0
+offset_right = 244.0
+offset_bottom = 50.0
+value = 50.0
+show_percentage = false
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="EnemyKiller" to="." method="_on_enemy_killer_body_entered"]

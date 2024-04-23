@@ -19,4 +19,3 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("2_wn2j7")
 theme_override_font_sizes/font_size = 30
-text = "00:00:00"

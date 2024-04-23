@@ -1,13 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://cqrrvpqh4h73b"]
+[gd_scene load_steps=23 format=3 uid="uid://cqrrvpqh4h73b"]
 
 [ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="1_8ubp4"]
 [ext_resource type="Script" path="res://Enemies/red_enemy.gd" id="1_gkbnx"]
+[ext_resource type="Texture2D" uid="uid://cqplh4ixoqem8" path="res://assets/0x72_16x16RobotTileset.v1-with-blue-eyes.png" id="2_wpu8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bhv4"]
 size = Vector2(14, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bo5kg"]
-atlas = ExtResource("1_8ubp4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yppi"]
+atlas = ExtResource("2_wpu8q")
 region = Rect2(208, 80, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_acim4"]
@@ -62,7 +63,7 @@ region = Rect2(400, 80, 16, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bo5kg")
+"texture": SubResource("AtlasTexture_3yppi")
 }],
 "loop": true,
 "name": &"Hacked",
@@ -137,8 +138,9 @@ shape = SubResource("RectangleShape2D_3bhv4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ba452")
-animation = &"Hacked"
+animation = &"Walk"
 autoplay = "Idle"
+frame_progress = 0.965659
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 

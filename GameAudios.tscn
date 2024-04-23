@@ -1,11 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd2j5aac03i36"]
+[gd_scene load_steps=13 format=3 uid="uid://cjmfip0ukrghx"]
 
-[ext_resource type="Script" path="res://gameaudios.gd" id="1_j4axe"]
+[ext_resource type="Script" path="res://GameAudios.gd" id="1_j4axe"]
 [ext_resource type="AudioStream" uid="uid://c83iqn4rvlue" path="res://assets/SFX/Holographic Tap Interaction.wav" id="1_tlbfa"]
+[ext_resource type="AudioStream" uid="uid://d33qld34h4ms7" path="res://assets/SFX/run.mp3" id="3_i7daq"]
+[ext_resource type="AudioStream" uid="uid://o8wgcq0s8131" path="res://assets/SFX/Music/Sci-Fi 1 Loop.mp3" id="4_4ur4u"]
+[ext_resource type="AudioStream" uid="uid://bm0vh2vgvnviv" path="res://assets/SFX/explosion2.wav" id="5_qqus4"]
+[ext_resource type="AudioStream" uid="uid://ci4ffprhv5miu" path="res://assets/SFX/hack_bloop.mp3" id="6_dfeww"]
+[ext_resource type="AudioStream" uid="uid://c7qe66vnsa53y" path="res://assets/SFX/dash_woosh.mp3" id="7_1ui1h"]
+[ext_resource type="AudioStream" uid="uid://bh4d72jrnkmh3" path="res://assets/SFX/death.mp3" id="7_upfha"]
+[ext_resource type="AudioStream" uid="uid://cn25oi1q5v0nb" path="res://assets/SFX/sword_slash.mp3" id="9_v7et5"]
+[ext_resource type="AudioStream" uid="uid://bdxfchnppxgnh" path="res://assets/SFX/elevator.wav" id="10_n47pg"]
+[ext_resource type="AudioStream" uid="uid://dkqow5f6yeuhw" path="res://assets/SFX/dialogue.mp3" id="11_ckrai"]
+[ext_resource type="AudioStream" uid="uid://dp6llnkawt5so" path="res://assets/SFX/giant-robot-footstep.mp3" id="12_57kwe"]
 
 [node name="GameAudios" type="Node"]
 script = ExtResource("1_j4axe")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_tlbfa")
 volume_db = 24.0
+
+[node name="Run" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_i7daq")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4ur4u")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qqus4")
+volume_db = 5.0
+
+[node name="Hack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dfeww")
+
+[node name="Dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1ui1h")
+volume_db = -20.223
+pitch_scale = 1.6
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_upfha")
+
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_v7et5")
+volume_db = -2.25
+pitch_scale = 0.77
+
+[node name="Elevator" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_n47pg")
+volume_db = 8.089
+
+[node name="Dialogue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ckrai")
+pitch_scale = 0.97
+
+[node name="RobotWalk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_57kwe")
+volume_db = 9.628
+pitch_scale = 0.93

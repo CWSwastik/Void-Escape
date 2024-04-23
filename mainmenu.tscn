@@ -13,12 +13,13 @@ func _process(_delta):
 	pass
 
 func _on_start_button_pressed():
-	GameAudios.buttonPressed()
+	GameAudios.button_pressed()
 	Global.player_abilities = []
 	Global.set_game_start_time()
 	get_tree().change_scene_to_file(\"res://Levels/level1.tscn\")
 
 func _on_options_button_pressed():
+	GameAudios.button_pressed()
 	get_tree().change_scene_to_file(\"res://leaderboard.tscn\")
 
 func _on_quit_button_pressed():

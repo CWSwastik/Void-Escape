@@ -25,14 +25,14 @@ func _physics_process(_delta):
 	if is_usable and Input.is_action_just_pressed("hack"):
 		print("Using computer")
 		using = true
-		
+		$HackMenu/PanelContainer/Panel/VBoxContainer/HBoxContainer/JumpButton.grab_focus()
 		label.visible = false
 		
 	if using:
 		hack_menu.visible = true
-		$HackMenu/PanelContainer/Panel/JumpLabel.visible = show_jump
-		$HackMenu/PanelContainer/Panel/DashLabel.visible = show_dash
-		$HackMenu/PanelContainer/Panel/AttackLabel.visible = show_attack
+		$HackMenu/PanelContainer/Panel/VBoxContainer/HBoxContainer.visible = show_jump
+		$HackMenu/PanelContainer/Panel/VBoxContainer/HBoxContainer2.visible = show_dash
+		$HackMenu/PanelContainer/Panel/VBoxContainer/HBoxContainer3.visible = show_attack
 	else:
 		hack_menu.visible = false
 		
@@ -40,13 +40,25 @@ func _physics_process(_delta):
 
 func _on_dash_button_toggled(toggled_on):
 	player.can_dash = toggled_on
+	if toggled_on:
+		Global.player_abilities.append("dash")
+	else:
+		Global.player_abilities.erase("dash")
 	print("Player Dash", toggled_on)
 
 
 func _on_jump_button_toggled(toggled_on):
 	player.can_jump = toggled_on
+	if toggled_on:
+		Global.player_abilities.append("jump")
+	else:
+		Global.player_abilities.erase("jump")
 	print("Player Jump", toggled_on)
 
 func _on_attack_button_toggled(toggled_on):
 	player.can_attack = toggled_on
+	if toggled_on:
+		Global.player_abilities.append("attack")
+	else:
+		Global.player_abilities.erase("attack")
 	print("Player Attack", toggled_on)

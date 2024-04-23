@@ -1,20 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://skjwn3bfyl58"]
+[gd_scene load_steps=3 format=3 uid="uid://skjwn3bfyl58"]
 
 [ext_resource type="Script" path="res://board_entry.gd" id="1_tc03a"]
+[ext_resource type="FontFile" uid="uid://cv8de3kqqibqp" path="res://assets/Fonts/joystix/joystix monospace.otf" id="2_tv1pb"]
 
 [node name="BoardEntry" type="HBoxContainer"]
-anchors_preset = 10
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-offset_bottom = 23.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
 alignment = 1
 script = ExtResource("1_tc03a")
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_tv1pb")
 text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tv1pb")
 text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1

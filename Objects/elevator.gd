@@ -11,6 +11,8 @@ func _ready():
 	
 func _physics_process(_delta):
 	global_position.y = move_toward(global_position.y, target.y, 1)
+	if global_position.y == target.y:
+		GameAudios.stop_elevator()
 	# TODO: fix entity under elevator bug
 	
 func _on_player_detector_body_entered(body):
@@ -19,8 +21,11 @@ func _on_player_detector_body_entered(body):
 			target = pivot + offset
 		else:
 			target = pivot
+		
+		GameAudios.elevator()
 
 
 func _on_player_detector_body_exited(body):
 	if body.name == "Player":
 		target = global_position
+		GameAudios.stop_elevator()
