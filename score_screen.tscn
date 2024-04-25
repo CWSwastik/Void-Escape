@@ -22,7 +22,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_lriws")
 expand_mode = 1
-stretch_mode = 1
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0

@@ -6,12 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://skjwn3bfyl58" path="res://board_entry.tscn" id="4_fp47v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b1gb5"]
-resource_local_to_scene = false
-resource_name = ""
-content_margin_left = -1.0
-content_margin_top = -1.0
-content_margin_right = -1.0
-content_margin_bottom = -1.0
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
@@ -31,7 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_weq54")
 expand_mode = 1
-stretch_mode = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

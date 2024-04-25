@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://csgglbelb75em"]
+[gd_scene load_steps=15 format=3 uid="uid://csgglbelb75em"]
 
 [ext_resource type="PackedScene" uid="uid://ckah0qh4nnyav" path="res://parallax_background.tscn" id="1_wkqnc"]
 [ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="2_hilar"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bkf8oryj0potu" path="res://Objects/timer.tscn" id="9_w3106"]
 [ext_resource type="Script" path="res://Levels/Dialogue.gd" id="10_b5rsy"]
 [ext_resource type="Texture2D" uid="uid://b1807amt7bsky" path="res://assets/player/Scientist.png" id="10_wcu6y"]
+[ext_resource type="PackedScene" uid="uid://csefc07jfja2r" path="res://AndroidControls.tscn" id="12_qstnk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bi0l4"]
 texture = ExtResource("2_hilar")
@@ -1244,6 +1245,8 @@ position = Vector2(156, 616)
 show_jump = true
 
 [node name="Timer" parent="." instance=ExtResource("9_w3106")]
+
+[node name="AndroidControls" parent="." instance=ExtResource("12_qstnk")]
 
 [node name="Dialogue" type="CanvasLayer" parent="."]
 script = ExtResource("10_b5rsy")

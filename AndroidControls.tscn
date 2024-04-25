@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://csefc07jfja2r"]
+
+[ext_resource type="Script" path="res://AndroidControls.gd" id="1_pn68f"]
+[ext_resource type="Texture2D" uid="uid://b0e1u3dpad863" path="res://assets/Android Assets/touchAttack1.png" id="2_wc180"]
+[ext_resource type="Texture2D" uid="uid://dav3ixx64b8ef" path="res://assets/Android Assets/touchButton1.png" id="3_lkb2l"]
+[ext_resource type="Texture2D" uid="uid://bspxvicsyfjl8" path="res://assets/Android Assets/touchDash1.png" id="4_lccx7"]
+[ext_resource type="Texture2D" uid="uid://bh1jd75q38upv" path="res://assets/Android Assets/touchHack1.png" id="5_h7vv0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eknum"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_denae"]
+radius = 140.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvccv"]
+radius = 125.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4c8g"]
+radius = 125.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ikgpy"]
+radius = 125.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7k8ri"]
+radius = 140.0
+
+[node name="AndroidControls" type="CanvasLayer"]
+script = ExtResource("1_pn68f")
+
+[node name="Con" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eknum")
+
+[node name="TouchAttack" type="TouchScreenButton" parent="Con"]
+modulate = Color(1, 1, 1, 0.764706)
+position = Vector2(850, 350)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_wc180")
+shape = SubResource("CircleShape2D_denae")
+action = "attack"
+visibility_mode = 1
+
+[node name="TouchLeft" type="TouchScreenButton" parent="Con"]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(150, 600)
+rotation = 3.14159
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_lkb2l")
+shape = SubResource("CircleShape2D_fvccv")
+passby_press = true
+action = "move_left"
+visibility_mode = 1
+
+[node name="TouchRight" type="TouchScreenButton" parent="Con"]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(190, 485)
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_lkb2l")
+shape = SubResource("CircleShape2D_h4c8g")
+passby_press = true
+action = "move_right"
+visibility_mode = 1
+
+[node name="TouchJump" type="TouchScreenButton" parent="Con"]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(1000, 450)
+rotation = -1.5708
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_lkb2l")
+shape = SubResource("CircleShape2D_ikgpy")
+action = "jump"
+visibility_mode = 1
+
+[node name="TouchDash" type="TouchScreenButton" parent="Con"]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(850, 490)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_lccx7")
+shape = SubResource("CircleShape2D_7k8ri")
+action = "dash"
+visibility_mode = 1
+
+[node name="TouchHack" type="TouchScreenButton" parent="Con"]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(1000, 485)
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("5_h7vv0")
+shape = SubResource("CircleShape2D_ikgpy")
+action = "hack"
+visibility_mode = 1

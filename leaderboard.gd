@@ -20,6 +20,5 @@ func on_leaderboard_load(result, response_code, headers, body):
 		entry.player_score = json.get_data().items[n].score
 		$ScorePanel/ScrollContainer/PlayerList.add_child(entry)
 
-
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://mainmenu.tscn")

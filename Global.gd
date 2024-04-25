@@ -9,7 +9,7 @@ var score = 0:
 var high_score = 0
 var old_high_score = 0
 var player_abilities = [] # jump, dash, attack
-var dialogue_played = true
+var dialogue_played = false      # change to false when exporting
 var escaped = false
 
 @onready var game_start_time = Time.get_ticks_msec()
@@ -38,4 +38,3 @@ func update_score():
 		score += 15*60-secs + 100
 		
 	game_start_time = Time.get_ticks_msec()
-	

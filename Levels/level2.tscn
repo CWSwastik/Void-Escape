@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3d1pbvn2fp7v"]
+[gd_scene load_steps=14 format=3 uid="uid://c3d1pbvn2fp7v"]
 
 [ext_resource type="PackedScene" uid="uid://ckah0qh4nnyav" path="res://parallax_background.tscn" id="1_1eedv"]
 [ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="2_5n48q"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bdy40i474m5vb" path="res://Objects/computer.tscn" id="7_my8im"]
 [ext_resource type="PackedScene" uid="uid://6ogjope1jhix" path="res://Objects/laser.tscn" id="8_cswdr"]
 [ext_resource type="PackedScene" uid="uid://bkf8oryj0potu" path="res://Objects/timer.tscn" id="10_ot80f"]
+[ext_resource type="PackedScene" uid="uid://csefc07jfja2r" path="res://AndroidControls.tscn" id="11_f1m8i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bi0l4"]
 texture = ExtResource("2_5n48q")
@@ -1263,3 +1264,5 @@ show_jump = true
 show_dash = true
 
 [node name="Timer" parent="." instance=ExtResource("10_ot80f")]
+
+[node name="AndroidControls" parent="." instance=ExtResource("11_f1m8i")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bln2u5hoix0cm"]
+[gd_scene load_steps=15 format=3 uid="uid://bln2u5hoix0cm"]
 
 [ext_resource type="PackedScene" uid="uid://ckah0qh4nnyav" path="res://parallax_background.tscn" id="1_hhsu1"]
 [ext_resource type="Texture2D" uid="uid://c4pv6uk8ogsjd" path="res://assets/0x72_16x16RobotTileset.v1.png" id="2_f60bt"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b42sgw7y27qd8" path="res://score_screen.tscn" id="8_v2yso"]
 [ext_resource type="PackedScene" uid="uid://bkf8oryj0potu" path="res://Objects/timer.tscn" id="9_wdu5g"]
 [ext_resource type="PackedScene" uid="uid://b2bmdblntc6iw" path="res://Objects/laser_toggle.tscn" id="10_3qsuk"]
+[ext_resource type="PackedScene" uid="uid://csefc07jfja2r" path="res://AndroidControls.tscn" id="12_t2bbq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bi0l4"]
 texture = ExtResource("2_f60bt")
@@ -1287,3 +1288,5 @@ laser = NodePath("../Laser")
 position = Vector2(890, 432)
 laser = NodePath("../Laser2")
 other_lasers = [NodePath("../Laser3"), NodePath("../Laser4")]
+
+[node name="AndroidControls" parent="." instance=ExtResource("12_t2bbq")]
